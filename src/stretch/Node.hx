@@ -21,6 +21,12 @@ class Node {
 		isDirty = true;
 	}
 
+	public static function leaf(style:Style, measure:MeasureFunc):Node {
+		var node = new Node(style);
+		node.measure = measure;
+		return node;
+	}
+
 	public function addChild(node:Node) {
 		node.parent = this;
 		children.push(node);
