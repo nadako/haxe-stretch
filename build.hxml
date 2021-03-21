@@ -1,0 +1,7 @@
+--class-path src
+--main Main
+--js main.js
+--define js-es=6
+--dce full
+--define analyzer-optimize
+--cmd node main.js
