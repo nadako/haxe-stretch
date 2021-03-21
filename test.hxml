@@ -1,0 +1,9 @@
+--class-path src
+--class-path test
+--main TestMain
+--library utest
+--js test.js
+--define js-es=6
+--no-inline
+--debug
+--cmd node test.js
