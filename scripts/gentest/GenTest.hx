@@ -13,6 +13,12 @@ extern class WebDriverApi {
 	static final until:WebDriverUntil;
 }
 
+@:jsRequire("selenium-webdriver", "Capabilities")
+extern class Capabilities {
+	static function chrome():Capabilities;
+	function set(key:String, value:Any):Capabilities;
+}
+
 extern class WebDriverUntil {
 	function elementLocated(by:By):WebElementCondition;
 }
@@ -23,6 +29,7 @@ extern class WebElementCondition {}
 extern class Builder {
 	function new();
 	function forBrowser(browser:String):Builder;
+	function withCapabilities(caps:Capabilities):Builder;
 	function build():ThenableWebDriver;
 }
 
@@ -91,7 +98,12 @@ function getDescriptions():Future<Array<Named<Desc>>> {
 				FileSystem.fullPath("test_fixtures/"+name)
 	];
 	var trigger = Future.trigger();
-	new Builder().forBrowser("chrome").build().then(d -> {
+	new Builder()
+		.forBrowser("chrome")
+		.withCapabilities(Capabilities.chrome().set("goog:chromeOptions", {
+			args: ["--headless", "--disable-gpu"]
+		}))
+		.build().then(d -> {
 		var locator = By.css("#test-root");
 		function getData(path) {
 			return new TinkPromise((resolve,reject) -> {
