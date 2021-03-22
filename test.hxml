@@ -2,6 +2,7 @@
 --class-path test
 --main TestMain
 --library utest
+--library hxnodejs
 --js test.js
 --define js-es=6
 --no-inline
