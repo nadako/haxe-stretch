@@ -918,6 +918,19 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node1.layout.location.x);
 		Assert.equals(0, node1.layout.location.y);
 	}
+	function test_display_none_with_position_absolute() {
+		var node0 = new Node({ display : None, positionType : Absolute, size : { width : Points(100), height : Points(100) } }, []);
+		var node = new Node({ size : { width : Points(100), height : Points(100) } }, [node0]);
+		Stretch.computeLayout(node, Size.undefined());
+		Assert.equals(100, node.layout.size.width);
+		Assert.equals(100, node.layout.size.height);
+		Assert.equals(0, node.layout.location.x);
+		Assert.equals(0, node.layout.location.y);
+		Assert.equals(0, node0.layout.size.width);
+		Assert.equals(0, node0.layout.size.height);
+		Assert.equals(0, node0.layout.location.x);
+		Assert.equals(0, node0.layout.location.y);
+	}
 	function test_flex_basis_and_main_dimen_set_when_flexing() {
 		var node0 = new Node({ flexGrow : 1, flexBasis : Points(10), size : { width : Points(50), height : Points(50) } }, []);
 		var node1 = new Node({ flexGrow : 1, flexBasis : Points(10), size : { width : Points(0), height : Points(50) } }, []);
