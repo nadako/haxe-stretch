@@ -465,12 +465,12 @@ class Stretch {
 				var unfrozen =
 					line.items.iterator().filter(child -> !child.frozen).collect();
 
-				var o =
-					unfrozen.iterator().fold({sumFlexGrow: 0.0, sumFlexShrink: 0.0}, (o, item) -> {
-						var style = item.node.style;
-						{sumFlexGrow: o.sumFlexGrow + style.flexGrow, sumFlexShrink: o.sumFlexShrink + style.flexShrink};
-					});
-				var sumFlexGrow = o.sumFlexGrow, sumFlexShrink = o.sumFlexShrink;
+				var sumFlexGrow = 0.0, sumFlexShrink = 0.0;
+				for (item in unfrozen) {
+					var style = item.node.style;
+					sumFlexGrow += style.flexGrow;
+					sumFlexShrink += style.flexShrink;
+				}
 
 				var freeSpace = if (growing && sumFlexGrow < 1.0) {
 					(initialFreeSpace * sumFlexGrow).maybeMin(nodeInnerSize.main(dir) - usedSpace);
