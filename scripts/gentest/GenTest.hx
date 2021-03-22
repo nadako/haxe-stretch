@@ -175,15 +175,17 @@ function main() {
 				}
 
 				function mkFloat(f:Float):Expr return {pos: null, expr: EConst(CFloat(Std.string(f)))};
-				function mkDim(d:Dim):Expr return switch d.unit {
-					case "auto": macro Auto;
-					case "points": macro Points(${mkFloat(d.value)});
-					case "percent": macro Percent(${mkFloat(d.value)});
-					case _: throw "invalid";
-				};
+				function mkDim(d:Dim):Expr return
+					if (d == null) macro Auto
+					else switch d.unit {
+						case "auto": macro Auto;
+						case "points": macro Points(${mkFloat(d.value)});
+						case "percent": macro Percent(${mkFloat(d.value)});
+						case _: throw "invalid";
+					};
 				function mkSize(d:Size):Expr return macro {
-					width: ${if (d.width != null) mkDim(d.width) else macro Auto},
-					height: ${if (d.height != null) mkDim(d.height) else macro Auto},
+					width: ${mkDim(d.width)},
+					height: ${mkDim(d.height)},
 				};
 
 				if (style.flexGrow != null) add("flexGrow", mkFloat(style.flexGrow));
@@ -192,6 +194,18 @@ function main() {
 				if (style.size != null) add("size", mkSize(style.size));
 				if (style.min_size != null) add("minSize", mkSize(style.min_size));
 				if (style.max_size != null) add("maxSize", mkSize(style.max_size));
+
+				function mkEdges(e:Edges) return macro {
+					start: ${mkDim(e.start)},
+					end: ${mkDim(e.end)},
+					top: ${mkDim(e.top)},
+					bottom: ${mkDim(e.bottom)},
+				}
+
+				if (style.margin != null) add("margin", mkEdges(style.margin));
+				if (style.padding != null) add("padding", mkEdges(style.padding));
+				if (style.position != null) add("position", mkEdges(style.position));
+				if (style.border != null) add("border", mkEdges(style.border));
 
 				var childIdents = new Array<Expr>();
 				for (i => child in node.children) {
