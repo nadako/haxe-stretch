@@ -1106,14 +1106,11 @@ class Stretch {
 
 		// Before returning we perform absolute layout on all absolutely positioned children
 		{
-			// TODO: remove number of Vec<_> generated
-			var candidates = node.children
-				.keyValueIterator()
-				.filter(o -> o.value.style.positionType == Absolute)
-				.collect();
+			for (order => child in node.children) {
+				if (child.style.positionType != Absolute) {
+					continue;
+				}
 
-			for (o in candidates) {
-				var order = o.key, child = o.value;
 				var containerWidth = containerSize.width.into();
 				var containerHeight = containerSize.height.into();
 
