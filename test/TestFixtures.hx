@@ -14,7 +14,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(30, node0.layout.location.y);
 	}
 	function test_absolute_layout_align_items_and_justify_content_center_and_bottom_position() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(60), height : Points(40) }, position : { start : Auto, end : Auto, top : Auto, bottom : Points(10) } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(60), height : Points(40) }, position : { start : Undefined, end : Undefined, top : Undefined, bottom : Points(10) } }, []);
 		var node = new Node({ alignItems : Center, justifyContent : Center, size : { width : Points(110), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(110, node.layout.size.width);
@@ -27,7 +27,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(50, node0.layout.location.y);
 	}
 	function test_absolute_layout_align_items_and_justify_content_center_and_left_position() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(60), height : Points(40) }, position : { start : Points(5), end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(60), height : Points(40) }, position : { start : Points(5), end : Undefined, top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ alignItems : Center, justifyContent : Center, size : { width : Points(110), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(110, node.layout.size.width);
@@ -40,7 +40,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(30, node0.layout.location.y);
 	}
 	function test_absolute_layout_align_items_and_justify_content_center_and_right_position() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(60), height : Points(40) }, position : { start : Auto, end : Points(5), top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(60), height : Points(40) }, position : { start : Undefined, end : Points(5), top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ alignItems : Center, justifyContent : Center, size : { width : Points(110), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(110, node.layout.size.width);
@@ -53,7 +53,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(30, node0.layout.location.y);
 	}
 	function test_absolute_layout_align_items_and_justify_content_center_and_top_position() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(60), height : Points(40) }, position : { start : Auto, end : Auto, top : Points(10), bottom : Auto } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(60), height : Points(40) }, position : { start : Undefined, end : Undefined, top : Points(10), bottom : Undefined } }, []);
 		var node = new Node({ alignItems : Center, justifyContent : Center, size : { width : Points(110), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(110, node.layout.size.width);
@@ -206,9 +206,9 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_absolute_layout_percentage_bottom_based_on_parent_height() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Auto, end : Auto, top : Percent(0.5), bottom : Auto } }, []);
-		var node1 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Auto, end : Auto, top : Auto, bottom : Percent(0.5) } }, []);
-		var node2 = new Node({ positionType : Absolute, size : { width : Points(10), height : Auto }, position : { start : Auto, end : Auto, top : Percent(0.1), bottom : Percent(0.1) } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Undefined, end : Undefined, top : Percent(0.5), bottom : Undefined } }, []);
+		var node1 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Undefined, end : Undefined, top : Undefined, bottom : Percent(0.5) } }, []);
+		var node2 = new Node({ positionType : Absolute, size : { width : Points(10), height : Auto }, position : { start : Undefined, end : Undefined, top : Percent(0.1), bottom : Percent(0.1) } }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(200) } }, [node0, node1, node2]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -242,7 +242,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(10, node0.layout.location.y);
 	}
 	function test_absolute_layout_width_height_end_bottom() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Auto, end : Points(10), top : Auto, bottom : Points(10) } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Undefined, end : Points(10), top : Undefined, bottom : Points(10) } }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -255,7 +255,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(80, node0.layout.location.y);
 	}
 	function test_absolute_layout_width_height_start_top() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Points(10), end : Auto, top : Points(10), bottom : Auto } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Points(10), end : Undefined, top : Points(10), bottom : Undefined } }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -281,10 +281,10 @@ class TestFixtures extends utest.Test {
 		Assert.equals(10, node0.layout.location.y);
 	}
 	function test_absolute_layout_within_border() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(50), height : Points(50) }, position : { start : Points(0), end : Auto, top : Points(0), bottom : Auto } }, []);
-		var node1 = new Node({ positionType : Absolute, size : { width : Points(50), height : Points(50) }, position : { start : Auto, end : Points(0), top : Auto, bottom : Points(0) } }, []);
-		var node2 = new Node({ positionType : Absolute, size : { width : Points(50), height : Points(50) }, margin : { start : Points(10), end : Points(10), top : Points(10), bottom : Points(10) }, position : { start : Points(0), end : Auto, top : Points(0), bottom : Auto } }, []);
-		var node3 = new Node({ positionType : Absolute, size : { width : Points(50), height : Points(50) }, margin : { start : Points(10), end : Points(10), top : Points(10), bottom : Points(10) }, position : { start : Auto, end : Points(0), top : Auto, bottom : Points(0) } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(50), height : Points(50) }, position : { start : Points(0), end : Undefined, top : Points(0), bottom : Undefined } }, []);
+		var node1 = new Node({ positionType : Absolute, size : { width : Points(50), height : Points(50) }, position : { start : Undefined, end : Points(0), top : Undefined, bottom : Points(0) } }, []);
+		var node2 = new Node({ positionType : Absolute, size : { width : Points(50), height : Points(50) }, position : { start : Points(0), end : Undefined, top : Points(0), bottom : Undefined }, margin : { start : Points(10), end : Points(10), top : Points(10), bottom : Points(10) } }, []);
+		var node3 = new Node({ positionType : Absolute, size : { width : Points(50), height : Points(50) }, position : { start : Undefined, end : Points(0), top : Undefined, bottom : Points(0) }, margin : { start : Points(10), end : Points(10), top : Points(10), bottom : Points(10) } }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(100) }, padding : { start : Points(10), end : Points(10), top : Points(10), bottom : Points(10) }, border : { start : Points(10), end : Points(10), top : Points(10), bottom : Points(10) } }, [node0, node1, node2, node3]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -511,7 +511,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node00.layout.location.y);
 	}
 	function test_align_items_center_child_with_margin_bigger_than_parent() {
-		var node00 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Points(10), end : Points(10), top : Auto, bottom : Auto } }, []);
+		var node00 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Points(10), end : Points(10), top : Undefined, bottom : Undefined } }, []);
 		var node0 = new Node({ alignItems : Center }, [node00]);
 		var node = new Node({ alignItems : Center, justifyContent : Center, size : { width : Points(50), height : Points(50) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -529,7 +529,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node00.layout.location.y);
 	}
 	function test_align_items_center_with_child_margin() {
-		var node0 = new Node({ size : { width : Points(10), height : Points(10) }, margin : { start : Auto, end : Auto, top : Points(10), bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(10), height : Points(10) }, margin : { start : Undefined, end : Undefined, top : Points(10), bottom : Undefined } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -542,7 +542,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(50, node0.layout.location.y);
 	}
 	function test_align_items_center_with_child_top() {
-		var node0 = new Node({ size : { width : Points(10), height : Points(10) }, position : { start : Auto, end : Auto, top : Points(10), bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(10), height : Points(10) }, position : { start : Undefined, end : Undefined, top : Points(10), bottom : Undefined } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -586,7 +586,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node00.layout.location.y);
 	}
 	function test_align_items_flex_end_child_with_margin_bigger_than_parent() {
-		var node00 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Points(10), end : Points(10), top : Auto, bottom : Auto } }, []);
+		var node00 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Points(10), end : Points(10), top : Undefined, bottom : Undefined } }, []);
 		var node0 = new Node({ alignItems : FlexEnd }, [node00]);
 		var node = new Node({ alignItems : Center, justifyContent : Center, size : { width : Points(50), height : Points(50) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -742,7 +742,7 @@ class TestFixtures extends utest.Test {
 	}
 	function test_border_center_child() {
 		var node0 = new Node({ size : { width : Points(10), height : Points(10) } }, []);
-		var node = new Node({ alignItems : Center, justifyContent : Center, size : { width : Points(100), height : Points(100) }, border : { start : Auto, end : Auto, top : Points(10), bottom : Points(20) } }, [node0]);
+		var node = new Node({ alignItems : Center, justifyContent : Center, size : { width : Points(100), height : Points(100) }, border : { start : Undefined, end : Undefined, top : Points(10), bottom : Points(20) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
 		Assert.equals(100, node.layout.size.height);
@@ -902,7 +902,7 @@ class TestFixtures extends utest.Test {
 	}
 	function test_display_none_with_position() {
 		var node0 = new Node({ flexGrow : 1 }, []);
-		var node1 = new Node({ display : None, flexGrow : 1, position : { start : Auto, end : Auto, top : Points(10), bottom : Auto } }, []);
+		var node1 = new Node({ display : None, flexGrow : 1, position : { start : Undefined, end : Undefined, top : Points(10), bottom : Undefined } }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(100) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -1737,7 +1737,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(200, node1.layout.location.y);
 	}
 	function test_flex_shrink_by_outer_margin_with_max_size() {
-		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Auto, end : Auto, top : Points(100), bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Undefined, end : Undefined, top : Points(100), bottom : Undefined } }, []);
 		var node = new Node({ flexDirection : Column, size : { width : Auto, height : Points(100) }, maxSize : { width : Auto, height : Points(80) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(20, node.layout.size.width);
@@ -1942,7 +1942,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(20, node2.layout.location.y);
 	}
 	function test_justify_content_column_min_height_and_margin_bottom() {
-		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Points(10) } }, []);
+		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Undefined, end : Undefined, top : Undefined, bottom : Points(10) } }, []);
 		var node = new Node({ flexDirection : Column, justifyContent : Center, minSize : { width : Auto, height : Points(50) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(20, node.layout.size.width);
@@ -1955,7 +1955,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(10, node0.layout.location.y);
 	}
 	function test_justify_content_column_min_height_and_margin_top() {
-		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Auto, end : Auto, top : Points(10), bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Undefined, end : Undefined, top : Points(10), bottom : Undefined } }, []);
 		var node = new Node({ flexDirection : Column, justifyContent : Center, minSize : { width : Auto, height : Points(50) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(20, node.layout.size.width);
@@ -2051,7 +2051,7 @@ class TestFixtures extends utest.Test {
 	}
 	function test_justify_content_min_width_with_padding_child_width_greater_than_parent() {
 		var node000 = new Node({ size : { width : Points(300), height : Points(100) } }, []);
-		var node00 = new Node({ justifyContent : Center, minSize : { width : Points(400), height : Auto }, padding : { start : Points(100), end : Points(100), top : Auto, bottom : Auto } }, [node000]);
+		var node00 = new Node({ justifyContent : Center, minSize : { width : Points(400), height : Auto }, padding : { start : Points(100), end : Points(100), top : Undefined, bottom : Undefined } }, [node000]);
 		var node0 = new Node({  }, [node00]);
 		var node = new Node({ flexDirection : Column, size : { width : Points(1000), height : Points(1584) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2074,7 +2074,7 @@ class TestFixtures extends utest.Test {
 	}
 	function test_justify_content_min_width_with_padding_child_width_lower_than_parent() {
 		var node000 = new Node({ size : { width : Points(199), height : Points(100) } }, []);
-		var node00 = new Node({ justifyContent : Center, minSize : { width : Points(400), height : Auto }, padding : { start : Points(100), end : Points(100), top : Auto, bottom : Auto } }, [node000]);
+		var node00 = new Node({ justifyContent : Center, minSize : { width : Points(400), height : Auto }, padding : { start : Points(100), end : Points(100), top : Undefined, bottom : Undefined } }, [node000]);
 		var node0 = new Node({  }, [node00]);
 		var node = new Node({ flexDirection : Column, size : { width : Points(1080), height : Points(1584) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2188,7 +2188,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node2.layout.location.y);
 	}
 	function test_justify_content_row_max_width_and_margin() {
-		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Points(100), end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Points(100), end : Undefined, top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ justifyContent : Center, size : { width : Points(100), height : Auto }, maxSize : { width : Points(80), height : Auto } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(80, node.layout.size.width);
@@ -2201,7 +2201,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_justify_content_row_min_width_and_margin() {
-		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Points(10), end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(20), height : Points(20) }, margin : { start : Points(10), end : Undefined, top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ justifyContent : Center, minSize : { width : Points(50), height : Auto } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(50, node.layout.size.width);
@@ -2283,7 +2283,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node2.layout.location.y);
 	}
 	function test_margin_and_flex_column() {
-		var node0 = new Node({ flexGrow : 1, margin : { start : Auto, end : Auto, top : Points(10), bottom : Points(10) } }, []);
+		var node0 = new Node({ flexGrow : 1, margin : { start : Undefined, end : Undefined, top : Points(10), bottom : Points(10) } }, []);
 		var node = new Node({ flexDirection : Column, size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -2296,7 +2296,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(10, node0.layout.location.y);
 	}
 	function test_margin_and_flex_row() {
-		var node0 = new Node({ flexGrow : 1, margin : { start : Points(10), end : Points(10), top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ flexGrow : 1, margin : { start : Points(10), end : Points(10), top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -2309,7 +2309,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_and_stretch_column() {
-		var node0 = new Node({ flexGrow : 1, margin : { start : Points(10), end : Points(10), top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ flexGrow : 1, margin : { start : Points(10), end : Points(10), top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ flexDirection : Column, size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -2322,7 +2322,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_and_stretch_row() {
-		var node0 = new Node({ flexGrow : 1, margin : { start : Auto, end : Auto, top : Points(10), bottom : Points(10) } }, []);
+		var node0 = new Node({ flexGrow : 1, margin : { start : Undefined, end : Undefined, top : Points(10), bottom : Points(10) } }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -2335,7 +2335,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(10, node0.layout.location.y);
 	}
 	function test_margin_auto_bottom() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Undefined, top : Undefined, bottom : Auto } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2353,7 +2353,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_auto_bottom_and_top() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Undefined, top : Auto, bottom : Auto } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2371,7 +2371,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_auto_bottom_and_top_justify_center() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Undefined, top : Auto, bottom : Auto } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ justifyContent : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2389,7 +2389,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node1.layout.location.y);
 	}
 	function test_margin_auto_left() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Undefined, top : Undefined, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2407,7 +2407,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_auto_left_and_right() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Undefined, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2425,7 +2425,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node1.layout.location.y);
 	}
 	function test_margin_auto_left_and_right_column() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Undefined, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2443,7 +2443,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_auto_left_and_right_column_and_center() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Undefined, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2461,7 +2461,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_auto_left_and_right_strech() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Undefined, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2479,7 +2479,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node1.layout.location.y);
 	}
 	function test_margin_auto_left_child_bigger_than_parent() {
-		var node0 = new Node({ size : { width : Points(72), height : Points(72) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(72), height : Points(72) }, margin : { start : Auto, end : Undefined, top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ justifyContent : Center, size : { width : Points(52), height : Points(52) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(52, node.layout.size.width);
@@ -2492,7 +2492,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_auto_left_fix_right_child_bigger_than_parent() {
-		var node0 = new Node({ size : { width : Points(72), height : Points(72) }, margin : { start : Auto, end : Points(10), top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(72), height : Points(72) }, margin : { start : Auto, end : Points(10), top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ justifyContent : Center, size : { width : Points(52), height : Points(52) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(52, node.layout.size.width);
@@ -2505,7 +2505,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_auto_left_right_child_bigger_than_parent() {
-		var node0 = new Node({ size : { width : Points(72), height : Points(72) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(72), height : Points(72) }, margin : { start : Auto, end : Auto, top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ justifyContent : Center, size : { width : Points(52), height : Points(52) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(52, node.layout.size.width);
@@ -2518,7 +2518,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_auto_left_stretching_child() {
-		var node0 = new Node({ flexGrow : 1, flexShrink : 1, flexBasis : Percent(0), margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ flexGrow : 1, flexShrink : 1, flexBasis : Percent(0), margin : { start : Auto, end : Undefined, top : Undefined, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2536,8 +2536,8 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_auto_mutiple_children_column() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
-		var node1 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Undefined, top : Auto, bottom : Undefined } }, []);
+		var node1 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Undefined, top : Auto, bottom : Undefined } }, []);
 		var node2 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ flexDirection : Column, alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1, node2]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2559,8 +2559,8 @@ class TestFixtures extends utest.Test {
 		Assert.equals(150, node2.layout.location.y);
 	}
 	function test_margin_auto_mutiple_children_row() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
-		var node1 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Auto, top : Undefined, bottom : Undefined } }, []);
+		var node1 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Auto, top : Undefined, bottom : Undefined } }, []);
 		var node2 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1, node2]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2582,7 +2582,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node2.layout.location.y);
 	}
 	function test_margin_auto_right() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Auto, top : Undefined, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2600,7 +2600,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_auto_top() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Undefined, top : Auto, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2618,7 +2618,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_auto_top_and_bottom_strech() {
-		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(50), height : Points(50) }, margin : { start : Undefined, end : Undefined, top : Auto, bottom : Auto } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ flexDirection : Column, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2636,7 +2636,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(150, node1.layout.location.y);
 	}
 	function test_margin_auto_top_stretching_child() {
-		var node0 = new Node({ flexGrow : 1, flexShrink : 1, flexBasis : Percent(0), margin : { start : Auto, end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ flexGrow : 1, flexShrink : 1, flexBasis : Percent(0), margin : { start : Undefined, end : Undefined, top : Auto, bottom : Undefined } }, []);
 		var node1 = new Node({ size : { width : Points(50), height : Points(50) } }, []);
 		var node = new Node({ alignItems : Center, size : { width : Points(200), height : Points(200) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2654,7 +2654,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(75, node1.layout.location.y);
 	}
 	function test_margin_bottom() {
-		var node0 = new Node({ size : { width : Auto, height : Points(10) }, margin : { start : Auto, end : Auto, top : Auto, bottom : Points(10) } }, []);
+		var node0 = new Node({ size : { width : Auto, height : Points(10) }, margin : { start : Undefined, end : Undefined, top : Undefined, bottom : Points(10) } }, []);
 		var node = new Node({ flexDirection : Column, justifyContent : FlexEnd, size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -2667,7 +2667,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(80, node0.layout.location.y);
 	}
 	function test_margin_fix_left_auto_right_child_bigger_than_parent() {
-		var node0 = new Node({ size : { width : Points(72), height : Points(72) }, margin : { start : Points(10), end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(72), height : Points(72) }, margin : { start : Points(10), end : Auto, top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ justifyContent : Center, size : { width : Points(52), height : Points(52) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(52, node.layout.size.width);
@@ -2680,7 +2680,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_left() {
-		var node0 = new Node({ size : { width : Points(10), height : Auto }, margin : { start : Points(10), end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(10), height : Auto }, margin : { start : Points(10), end : Undefined, top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -2693,7 +2693,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_right() {
-		var node0 = new Node({ size : { width : Points(10), height : Auto }, margin : { start : Auto, end : Points(10), top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(10), height : Auto }, margin : { start : Undefined, end : Points(10), top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ justifyContent : FlexEnd, size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -2706,7 +2706,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_should_not_be_part_of_max_height() {
-		var node0 = new Node({ size : { width : Points(100), height : Points(100) }, maxSize : { width : Auto, height : Points(100) }, margin : { start : Auto, end : Auto, top : Points(20), bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(100), height : Points(100) }, maxSize : { width : Auto, height : Points(100) }, margin : { start : Undefined, end : Undefined, top : Points(20), bottom : Undefined } }, []);
 		var node = new Node({ size : { width : Points(250), height : Points(250) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(250, node.layout.size.width);
@@ -2719,7 +2719,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(20, node0.layout.location.y);
 	}
 	function test_margin_should_not_be_part_of_max_width() {
-		var node0 = new Node({ size : { width : Points(100), height : Points(100) }, maxSize : { width : Points(100), height : Auto }, margin : { start : Points(20), end : Auto, top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Points(100), height : Points(100) }, maxSize : { width : Points(100), height : Auto }, margin : { start : Points(20), end : Undefined, top : Undefined, bottom : Undefined } }, []);
 		var node = new Node({ size : { width : Points(250), height : Points(250) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(250, node.layout.size.width);
@@ -2732,7 +2732,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node0.layout.location.y);
 	}
 	function test_margin_top() {
-		var node0 = new Node({ size : { width : Auto, height : Points(10) }, margin : { start : Auto, end : Auto, top : Points(10), bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Auto, height : Points(10) }, margin : { start : Undefined, end : Undefined, top : Points(10), bottom : Undefined } }, []);
 		var node = new Node({ flexDirection : Column, size : { width : Points(100), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -2745,7 +2745,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(10, node0.layout.location.y);
 	}
 	function test_margin_with_sibling_column() {
-		var node0 = new Node({ flexGrow : 1, margin : { start : Auto, end : Auto, top : Auto, bottom : Points(10) } }, []);
+		var node0 = new Node({ flexGrow : 1, margin : { start : Undefined, end : Undefined, top : Undefined, bottom : Points(10) } }, []);
 		var node1 = new Node({ flexGrow : 1 }, []);
 		var node = new Node({ flexDirection : Column, size : { width : Points(100), height : Points(100) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -2763,7 +2763,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(55, node1.layout.location.y);
 	}
 	function test_margin_with_sibling_row() {
-		var node0 = new Node({ flexGrow : 1, margin : { start : Auto, end : Points(10), top : Auto, bottom : Auto } }, []);
+		var node0 = new Node({ flexGrow : 1, margin : { start : Undefined, end : Points(10), top : Undefined, bottom : Undefined } }, []);
 		var node1 = new Node({ flexGrow : 1 }, []);
 		var node = new Node({ size : { width : Points(100), height : Points(100) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -3080,7 +3080,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node00.layout.location.y);
 	}
 	function test_percentage_absolute_position() {
-		var node0 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Percent(0.3), end : Auto, top : Percent(0.1), bottom : Auto } }, []);
+		var node0 = new Node({ positionType : Absolute, size : { width : Points(10), height : Points(10) }, position : { start : Percent(0.3), end : Undefined, top : Percent(0.1), bottom : Undefined } }, []);
 		var node = new Node({ flexDirection : Column, size : { width : Points(200), height : Points(100) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(200, node.layout.size.width);
@@ -3347,7 +3347,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(20, node00.layout.location.y);
 	}
 	function test_percentage_position_bottom_right() {
-		var node0 = new Node({ size : { width : Percent(0.55), height : Percent(0.15) }, position : { start : Auto, end : Percent(0.2), top : Auto, bottom : Percent(0.1) } }, []);
+		var node0 = new Node({ size : { width : Percent(0.55), height : Percent(0.15) }, position : { start : Undefined, end : Percent(0.2), top : Undefined, bottom : Percent(0.1) } }, []);
 		var node = new Node({ size : { width : Points(500), height : Points(500) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(500, node.layout.size.width);
@@ -3360,7 +3360,7 @@ class TestFixtures extends utest.Test {
 		Assert.equals(-50, node0.layout.location.y);
 	}
 	function test_percentage_position_left_top() {
-		var node0 = new Node({ size : { width : Percent(0.45), height : Percent(0.55) }, position : { start : Percent(0.1), end : Auto, top : Percent(0.2), bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Percent(0.45), height : Percent(0.55) }, position : { start : Percent(0.1), end : Undefined, top : Percent(0.2), bottom : Undefined } }, []);
 		var node = new Node({ size : { width : Points(400), height : Points(400) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(400, node.layout.size.width);
@@ -3432,7 +3432,7 @@ class TestFixtures extends utest.Test {
 	function test_percent_absolute_position() {
 		var node00 = new Node({ size : { width : Percent(1), height : Auto } }, []);
 		var node01 = new Node({ size : { width : Percent(1), height : Auto } }, []);
-		var node0 = new Node({ positionType : Absolute, size : { width : Percent(1), height : Points(50) }, position : { start : Percent(0.5), end : Auto, top : Auto, bottom : Auto } }, [node00, node01]);
+		var node0 = new Node({ positionType : Absolute, size : { width : Percent(1), height : Points(50) }, position : { start : Percent(0.5), end : Undefined, top : Undefined, bottom : Undefined } }, [node00, node01]);
 		var node = new Node({ flexDirection : Column, size : { width : Points(60), height : Points(50) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(60, node.layout.size.width);
@@ -3481,8 +3481,8 @@ class TestFixtures extends utest.Test {
 		Assert.equals(0, node2.layout.location.y);
 	}
 	function test_relative_position_should_not_nudge_siblings() {
-		var node0 = new Node({ size : { width : Auto, height : Points(10) }, position : { start : Auto, end : Auto, top : Points(15), bottom : Auto } }, []);
-		var node1 = new Node({ size : { width : Auto, height : Points(10) }, position : { start : Auto, end : Auto, top : Points(15), bottom : Auto } }, []);
+		var node0 = new Node({ size : { width : Auto, height : Points(10) }, position : { start : Undefined, end : Undefined, top : Points(15), bottom : Undefined } }, []);
+		var node1 = new Node({ size : { width : Auto, height : Points(10) }, position : { start : Undefined, end : Undefined, top : Points(15), bottom : Undefined } }, []);
 		var node = new Node({ flexDirection : Column, size : { width : Points(100), height : Points(100) } }, [node0, node1]);
 		Stretch.computeLayout(node, Size.undefined());
 		Assert.equals(100, node.layout.size.width);
@@ -3716,8 +3716,8 @@ class TestFixtures extends utest.Test {
 		Assert.equals(89, node2.layout.location.y);
 	}
 	function test_rounding_total_fractial_nested() {
-		var node00 = new Node({ flexGrow : 1, flexBasis : Points(0.3), size : { width : Auto, height : Points(9.9) }, position : { start : Auto, end : Auto, top : Auto, bottom : Points(13.3) } }, []);
-		var node01 = new Node({ flexGrow : 4, flexBasis : Points(0.3), size : { width : Auto, height : Points(1.1) }, position : { start : Auto, end : Auto, top : Points(13.3), bottom : Auto } }, []);
+		var node00 = new Node({ flexGrow : 1, flexBasis : Points(0.3), size : { width : Auto, height : Points(9.9) }, position : { start : Undefined, end : Undefined, top : Undefined, bottom : Points(13.3) } }, []);
+		var node01 = new Node({ flexGrow : 4, flexBasis : Points(0.3), size : { width : Auto, height : Points(1.1) }, position : { start : Undefined, end : Undefined, top : Points(13.3), bottom : Undefined } }, []);
 		var node0 = new Node({ flexDirection : Column, flexGrow : 0.7, flexBasis : Points(50.3), size : { width : Auto, height : Points(20.3) } }, [node00, node01]);
 		var node1 = new Node({ flexGrow : 1.6, size : { width : Auto, height : Points(10) } }, []);
 		var node2 = new Node({ flexGrow : 1.1, size : { width : Auto, height : Points(10.7) } }, []);
@@ -4064,7 +4064,7 @@ class TestFixtures extends utest.Test {
 		var node000 = new Node({ size : { width : Points(40), height : Points(40) } }, []);
 		var node00 = new Node({ flexDirection : Column }, [node000]);
 		var node010 = new Node({ size : { width : Points(40), height : Points(40) } }, []);
-		var node01 = new Node({ flexDirection : Column, margin : { start : Auto, end : Auto, top : Points(10), bottom : Auto } }, [node010]);
+		var node01 = new Node({ flexDirection : Column, margin : { start : Undefined, end : Undefined, top : Points(10), bottom : Undefined } }, [node010]);
 		var node0 = new Node({ flexWrap : Wrap, size : { width : Points(70), height : Auto } }, [node00, node01]);
 		var node = new Node({ flexDirection : Column, size : { width : Points(500), height : Points(500) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());
@@ -4097,7 +4097,7 @@ class TestFixtures extends utest.Test {
 		var node000 = new Node({ size : { width : Points(40), height : Points(40) } }, []);
 		var node00 = new Node({ flexDirection : Column }, [node000]);
 		var node010 = new Node({ size : { width : Points(40), height : Points(40) } }, []);
-		var node01 = new Node({ flexDirection : Column, margin : { start : Auto, end : Points(10), top : Auto, bottom : Auto } }, [node010]);
+		var node01 = new Node({ flexDirection : Column, margin : { start : Undefined, end : Points(10), top : Undefined, bottom : Undefined } }, [node010]);
 		var node0 = new Node({ flexWrap : Wrap, size : { width : Points(85), height : Auto } }, [node00, node01]);
 		var node = new Node({ flexDirection : Column, size : { width : Points(500), height : Points(500) } }, [node0]);
 		Stretch.computeLayout(node, Size.undefined());

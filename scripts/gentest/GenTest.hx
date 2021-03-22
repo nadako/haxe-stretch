@@ -175,8 +175,8 @@ function main() {
 				}
 
 				function mkFloat(f:Float):Expr return {pos: null, expr: EConst(CFloat(Std.string(f)))};
-				function mkDim(d:Dim):Expr return
-					if (d == null) macro Auto
+				function mkDim(d:Dim, undef = false):Expr return
+					if (d == null) (if (undef) macro Undefined else macro Auto)
 					else switch d.unit {
 						case "auto": macro Auto;
 						case "points": macro Points(${mkFloat(d.value)});
@@ -196,15 +196,15 @@ function main() {
 				if (style.max_size != null) add("maxSize", mkSize(style.max_size));
 
 				function mkEdges(e:Edges) return macro {
-					start: ${mkDim(e.start)},
-					end: ${mkDim(e.end)},
-					top: ${mkDim(e.top)},
-					bottom: ${mkDim(e.bottom)},
+					start: ${mkDim(e.start, true)},
+					end: ${mkDim(e.end, true)},
+					top: ${mkDim(e.top, true)},
+					bottom: ${mkDim(e.bottom, true)},
 				}
 
+				if (style.position != null) add("position", mkEdges(style.position));
 				if (style.margin != null) add("margin", mkEdges(style.margin));
 				if (style.padding != null) add("padding", mkEdges(style.padding));
-				if (style.position != null) add("position", mkEdges(style.position));
 				if (style.border != null) add("border", mkEdges(style.border));
 
 				var childIdents = new Array<Expr>();
