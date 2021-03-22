@@ -883,8 +883,9 @@ class Stretch {
 				};
 
 				if (layoutReverse) {
-					var i = line.items.length;
-					while (i-- > 0) justifyItem(i, line.items[i]);
+					var len = line.items.length;
+					var i = len;
+					while (i-- > 0) justifyItem(len - i - 1, line.items[i]);
 				} else {
 					for (i => item in line.items) justifyItem(i, item);
 				}
@@ -1041,8 +1042,9 @@ class Stretch {
 		}
 
 		if (isWrapReverse) {
-			var i = flexLines.length;
-			while (i-- > 0) alignLine(i, flexLines[i]);
+			var len = flexLines.length;
+			var i = len;
+			while (i-- > 0) alignLine(len - i - 1, flexLines[i]);
 		} else {
 			for (i => line in flexLines) alignLine(i, line);
 		}
