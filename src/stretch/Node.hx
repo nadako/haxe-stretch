@@ -14,7 +14,11 @@ class Node {
 	public var children(default,null):Null<Array<Node>>;
 
 	public function new(style:Style, ?children:Array<Node>) {
-		if (children == null) children = [];
+		if (children == null) {
+			children = [];
+		} else {
+			for (child in children) child.parent = this;
+		}
 		this.style = style;
 		this.children = children;
 		layout = {order: 0, size: Size.zero(), location: Point.zero()};
@@ -34,10 +38,32 @@ class Node {
 	}
 
 	public function removeChild(node:Node) {
-		if (children.remove(node)) {
-			node.parent = null;
-			markDirty();
+		var index = children.indexOf(node);
+		if (index != null) {
+			removeChildAtIndex(index);
 		}
+	}
+
+	public function removeChildAtIndex(index:Int) {
+		var child = children[index];
+		children.splice(index, 1);
+		child.parent = null;
+		markDirty();
+	}
+
+	public function replaceChildAtIndex(index:Int, child:Node) {
+		var oldChild = children[index];
+		oldChild.parent = null;
+		child.parent = this;
+		children[index] = child;
+		markDirty();
+	}
+
+	public function setChildren(newChildren:Array<Node>) {
+		for (child in children) child.parent = null;
+		for (child in newChildren) child.parent = this;
+		children = newChildren;
+		markDirty();
 	}
 
 	public inline function markDirty() {
