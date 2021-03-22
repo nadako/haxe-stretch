@@ -57,7 +57,7 @@ class Stretch {
 		var absX = absX + layout.location.x;
 		var absY = absY + layout.location.y;
 
-		// TODO: check if Math.fround behaves the same as sys::round in Rust version
+		// TODO: rust rounds half-way cases away from zero
 		layout.location.x = Math.fround(layout.location.x);
 		layout.location.y = Math.fround(layout.location.y);
 		layout.size.width = Math.fround(absX + layout.size.width) - Math.round(absX);
