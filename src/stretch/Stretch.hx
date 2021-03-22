@@ -349,8 +349,8 @@ class Stretch {
 						});
 					var index = if (index != null) index.key else flexItems.length;
 
-					var items = flexItems.splice(0, index);
-					var rest = flexItems.splice(index, flexItems.length);
+					var items = flexItems.slice(0, index);
+					var rest = flexItems.slice(index, flexItems.length);
 					lines.push({ items: items, crossSize: 0.0, offsetCross: 0.0 });
 					flexItems = rest;
 				}
