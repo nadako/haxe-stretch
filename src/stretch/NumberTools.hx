@@ -31,7 +31,3 @@ extern inline overload function maybeMax(self:Number, rhs:Number):Number {
         case _: Number.undefined();
     }
 }
-
-inline function isNormal(self:Float):Bool {
-    return Math.isFinite(self) && self != 0; // TODO: epsilon
-}

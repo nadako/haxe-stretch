@@ -462,8 +462,8 @@ class Stretch {
 					})
 					.sum();
 
-				var unfrozen =
-					line.items.iterator().filter(child -> !child.frozen).collect();
+
+				var unfrozen = [for (child in line.items) if (!child.frozen) child];
 
 				var sumFlexGrow = 0.0, sumFlexShrink = 0.0;
 				for (item in unfrozen) {
@@ -499,7 +499,7 @@ class Stretch {
 				//    - Otherwise
 				//        Do Nothing
 
-				if (freeSpace.isNormal()) {
+				if (freeSpace != 0.0) {
 					if (growing && sumFlexGrow > 0.0) {
 						for (child in unfrozen) {
 							child.targetSize.setMain(
