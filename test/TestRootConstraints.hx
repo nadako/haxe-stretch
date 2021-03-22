@@ -1,8 +1,3 @@
-import stretch.Node;
-import stretch.Number;
-import stretch.Stretch;
-import utest.Assert;
-
 class TestRootConstraints extends utest.Test {
 	function testRootWithPercentageSize() {
         var node = new Node({

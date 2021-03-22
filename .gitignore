@@ -1,3 +1,6 @@
 /main.js
 /test.js
 /test.js.map
+/.unittest
+/node_modules
+/gentest.js

@@ -1,8 +1,3 @@
-import stretch.Node;
-import stretch.Size;
-import stretch.Stretch;
-import utest.Assert;
-
 class TestMeasure extends utest.Test {
     function testMeasureRoot() {
         var node = Node.leaf({}, constraint -> {

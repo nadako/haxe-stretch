@@ -1,0 +1,7 @@
+--library hxnodejs
+--library tink_core
+--class-path scripts/gentest
+--main GenTest
+--js gentest.js
+--define js-es=6
+--cmd node gentest.js
