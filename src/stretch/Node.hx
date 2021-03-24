@@ -39,7 +39,7 @@ class Node {
 
 	public function removeChild(node:Node) {
 		var index = children.indexOf(node);
-		if (index != null) {
+		if (index != -1) {
 			removeChildAtIndex(index);
 		}
 	}
