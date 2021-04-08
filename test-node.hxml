@@ -5,6 +5,4 @@
 --library hxnodejs
 --js test.js
 --define js-es=6
---no-inline
---debug
 --cmd node test.js

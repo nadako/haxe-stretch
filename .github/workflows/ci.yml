@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        haxe-version:
+          - 4.1.5
+          - stable
+          - nightly
+        target:
+          - node
+
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v2
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - name: Cache Yarn
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    - name: Cache Haxe
+      uses: actions/cache@v1
+      with:
+        path: ~/haxe
+        key: haxe
+
+    - name: Install Lix
+      uses: lix-pm/setup-lix@master
+
+    - name: Install Haxe
+      run: lix install haxe ${{ matrix.haxe-version }}
+
+    - name: Run Test
+      run: haxe test-${{ matrix.target }}.hxml
